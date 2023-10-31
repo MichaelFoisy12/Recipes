@@ -4,11 +4,6 @@ import  Recipe  from "./Recipe"
 
 export default function App(){
  
-
-
-
- 
-
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState('');
@@ -21,7 +16,6 @@ export default function App(){
       const response = await fetch(`http://localhost:8000/recipes?q=${query}`);
       const data =  await response.json(); // Await for any external request. For data that doesnt come back instantly
       setRecipes(data.hits); 
-    //  console.log(import.meta.env.VITE_API_KEY); 
       console.log(data);
       
   }
@@ -35,7 +29,6 @@ export default function App(){
     e.preventDefault();
     setQuery(search);
     setSearch('');
-    //console.log(search);
   }
 
   return (

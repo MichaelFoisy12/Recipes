@@ -4,10 +4,6 @@ import dotenv from 'dotenv'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  //base: "/recipes",
+  base: "/recipes",
   plugins: [react()],
-/*   define:{
-    'process.env.VITE_API_ID':JSON.stringify(process.env.VITE_API_ID),
-    'process.env.VITE_API_KEY':JSON.stringify(process.env.VITE_API_KEY),
-  } */
 })

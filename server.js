@@ -1,4 +1,4 @@
-const PORT = 8000;
+
 import dotenv from 'dotenv';
 import express, { response } from 'express';
 import cors from 'cors';
