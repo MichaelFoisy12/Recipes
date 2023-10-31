@@ -1,35 +1,41 @@
 import { useState, useEffect, useSyncExternalStore } from 'react'
 import  Recipe  from "./Recipe"
 
-export default function App(){
 
-  const APP_ID = "927a369b";
-  const APP_KEY = "55b42b412d25e812aba9e8fee39bf32c";
-  
+export default function App(){
+ 
+
+
+
+ 
+
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState('chicken');
+  const [query, setQuery] = useState('');
 
   useEffect(() =>{
     getRecipes();
   }, [query]);
 
-  const getRecipes = async () =>{
-    const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
-    const data =  await response.json(); // Await for any external request. For data that doesnt come back instantly
-    setRecipes(data.hits);
-    console.log(data.hits);
+    const getRecipes = async () =>{
+      const response = await fetch(`http://localhost:8000/recipes?q=${query}`);
+      const data =  await response.json(); // Await for any external request. For data that doesnt come back instantly
+      setRecipes(data.hits); 
+    //  console.log(import.meta.env.VITE_API_KEY); 
+      console.log(data);
+      
   }
 
   const updateSearch = e => {
     setSearch(e.target.value);
+    
   }
 
   const getSearch = e => {
     e.preventDefault();
     setQuery(search);
     setSearch('');
-
+    //console.log(search);
   }
 
   return (
@@ -54,4 +60,5 @@ export default function App(){
     </div>
     </div>
   )
+  
 }
